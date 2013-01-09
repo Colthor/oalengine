@@ -296,6 +296,7 @@ bool OALEngine::PauseAllSounds()
 		if(AL_PLAYING == state) alSourcePause(mSources[i]);
 
 	}
+	return (AL_NO_ERROR == alGetError());
 }
 
 bool OALEngine::ResumeAllSounds()
@@ -308,6 +309,7 @@ bool OALEngine::ResumeAllSounds()
 		if(AL_PAUSED == state) alSourcePlay(mSources[i]);
 
 	}
+	return (AL_NO_ERROR == alGetError());
 }
 
 
@@ -317,6 +319,7 @@ bool OALEngine::StopSound(SoundID id)
 	if(!GetChannelFromSoundID(id, &i)) return false;
 
 	alSourceStop(mSources[i]);
+	return (AL_NO_ERROR == alGetError());
 }
 
 bool OALEngine::PauseSound(SoundID id)
